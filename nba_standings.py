@@ -63,7 +63,7 @@ def show_result():
             if position == 15:
                 print("\nWestern Conference\n")
             print(
-                f"{(position + 1) - 15}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
+                f"{position - 15}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
 
 
 get_team_information()
