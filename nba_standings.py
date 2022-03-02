@@ -15,8 +15,7 @@ list_numbers_last, list_numbers_streak = [n for n in range(7, 361, 12)], [n for 
 # PF start from position 8 [n for n in range(8, 361, 12)]
 # PA start from position 9 [n for n in range(9, 361, 12)]
 # Streak start from position 10 [n for n in range(10, 361, 12)]
-# Diff start from position 11 [n for n in range(11, 361, 12)]
-# Win Championship start from position 12 [n for n in range(12, 361, 12)]
+# Win Championship start from position 11 [n for n in range(12, 361, 12)]
 # and below in get_team_information check for the index and add the value if you want more detail info
 
 
