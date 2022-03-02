@@ -2,7 +2,7 @@
 
 Little project that will give you information on current NBA standings.
 
-Information will be in the format example below.
+Information will be in the format example below. YOU CAN ADD ADITION INFORMATION IF YOU WANT CHECK THE COMMENTS IN THE SCRIPT!
 
 Eastern Conference
 
