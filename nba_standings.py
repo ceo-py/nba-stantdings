@@ -33,7 +33,6 @@ soup = BeautifulSoup(get_data("https://sports.yahoo.com/nba/standings/"), 'html.
 
 def get_team_information():
     got_w, got_l, got_last_ten, got_streak = False, False, False, False
-    i = 1
     for index, numbers in enumerate(soup.find_all(class_="Bdb(primary-border) Ta(end) Px(cell-padding-x)")):
         if index in list_numbers_wins:
             wins_d = numbers.get_text()
