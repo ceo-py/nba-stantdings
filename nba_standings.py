@@ -4,18 +4,18 @@ from bs4 import BeautifulSoup
 list_numbers_wins, list_numbers_losses = [n for n in range(0, 361, 12)], [n for n in range(1, 361, 12)]
 list_numbers_last, list_numbers_streak = [n for n in range(7, 361, 12)], [n for n in range(10, 361, 12)]
 
-# wins start from index 0 [n for n in range(0, 361, 12)]
-# losses start from index 1 [n for n in range(1, 361, 12)]
-# Pct start from index 2 [n for n in range(2, 361, 12)]
-# CGB start from index 3 [n for n in range(3, 361, 12)]
-# Home start from index 4 [n for n in range(4, 361, 12)]
-# Div start from index 5 [n for n in range(5, 361, 12)]
-# Conf start from index 6 [n for n in range(6, 361, 12)]
-# Last 10 games start from index 7 [n for n in range(7, 361, 12)]
-# PF start from index 8 [n for n in range(8, 361, 12)]
-# PA start from index 9 [n for n in range(9, 361, 12)]
-# Streak start from index 10 [n for n in range(10, 361, 12)]
-# Win Championship start from index 11 [n for n in range(11, 361, 12)]
+# wins start from position 0 [n for n in range(0, 361, 12)]
+# losses start from position 1 [n for n in range(1, 361, 12)]
+# Pct start from position 2 [n for n in range(2, 361, 12)]
+# CGB start from position 3 [n for n in range(3, 361, 12)]
+# Home start from position 4 [n for n in range(4, 361, 12)]
+# Div start from position 5 [n for n in range(5, 361, 12)]
+# Conf start from position 6 [n for n in range(6, 361, 12)]
+# Last 10 games start from position 7 [n for n in range(7, 361, 12)]
+# PF start from position 8 [n for n in range(8, 361, 12)]
+# PA start from position 9 [n for n in range(9, 361, 12)]
+# Streak start from position 11 [n for n in range(10, 361, 12)]
+# Win Championship start from position 12 [n for n in range(11, 361, 12)]
 # and below in get_team_information check for the index and add the value if you want more detail info
 
 
@@ -33,6 +33,7 @@ soup = BeautifulSoup(get_data("https://sports.yahoo.com/nba/standings/"), 'html.
 
 def get_team_information():
     got_w, got_l, got_last_ten, got_streak = False, False, False, False
+    i = 1
     for index, numbers in enumerate(soup.find_all(class_="Bdb(primary-border) Ta(end) Px(cell-padding-x)")):
         if index in list_numbers_wins:
             wins_d = numbers.get_text()
@@ -53,16 +54,14 @@ def get_team_information():
 
 def show_result():
     print("\nEastern Conference\n")
+    i = 1
     for position, (team_name, show) in enumerate(
             zip(soup.find_all(class_="Ta(start) Fw(400) Fz(12px) H(40px) W(25%)"), team_info)):
-        if position < 15:
-            print(
-                f"{position + 1}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
-        else:
-            if position == 15:
-                print("\nWestern Conference\n")
-            print(
-                f"{position - 15}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
+        if position == 15:
+            print("\nWestern Conference\n")
+            i = -14
+        print(
+            f"{position + i}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
 
 
 get_team_information()
