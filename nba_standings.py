@@ -36,16 +36,14 @@ def get_team_information():
 
 
 def show_result():
-    west_p = False
     print("\nEastern Conference\n")
     for position, (team_name, show) in enumerate(zip(soup.find_all(class_="Ta(start) Fw(400) Fz(12px) H(40px) W(25%)"), team_info)):
         if position < 15:
             print(
                 f"{position+1}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
         else:
-            if not west_p:
+            if position == 15:
                 print("\nWestern Conference\n")
-                west_p = True
             print(f"{(position+1)-15}. {team_name.get_text()} : W {show[w]}, L {show[l]}, Last 10 {show[last_games_p]}, Streak {show[streak_p]}")
 
 
