@@ -3,6 +3,7 @@ from requests_html import HTMLSession
 session = HTMLSession()
 r = session.get('https://sports.yahoo.com/nba/standings/')
 info = {"Eastern": {}, "Western": {}}
+conf = {1: "Eastern", 2: "Western"}
 
 
 def get_teams_information():
@@ -16,11 +17,7 @@ def get_teams_information():
                 stats_teams.append((r.html.xpath(
                     f'//*[@id="Col1-0-LeagueStandings-Proxy"]/div/div[2]/table[{f}]/tbody/tr[{x}]/td[{i}]',
                     first=True)).text)
-            if f == 1:
-                conference_ = "Eastern"
-            else:
-                conference_ = "Western"
-            info[conference_][team_name] = [
+            info[conf[f]][team_name] = [
                 {"pos": x, "W": stats_teams[0], "L": stats_teams[1], "Last 10": stats_teams[8],
                  "Streak": stats_teams[12]}]
 
@@ -37,6 +34,7 @@ def show_result():
 
 get_teams_information()
 show_result()
+
 
 
 # # you can access additional information
