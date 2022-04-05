@@ -39,7 +39,20 @@ get_teams_information()
 show_result()
 
 
-
+# # you can access additional information
+# "stats_teams[0] - W"
+# "stats_teams[1] - L"
+# "stats_teams[2] - Ptc"
+# "stats_teams[3] - CGB"
+# "stats_teams[5] - Home"
+# "stats_teams[6] - Div"
+# "stats_teams[7] - Conf"
+# "stats_teams[8] - Last 10"
+# "stats_teams[9] - PF"
+# "stats_teams[10] - PA"
+# "stats_teams[11] - Diff"
+# "stats_teams[12] - Streak"
+# "stats_teams[12] - Win Championship"
 
 
 
